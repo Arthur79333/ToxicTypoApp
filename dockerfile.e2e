@@ -1,0 +1,16 @@
+FROM python:2.7-slim
+
+
+COPY /src/test /tests
+
+WORKDIR /tests
+
+
+RUN pip install -r requirments.txt
+
+EXPOSE 9090
+
+
+#sanity test only to save time
+ENTRYPOINT ["python", "e2e_test.py"]
+# ENTRYPOINT ["python", "e2e_test.py", "app:9090", "e2e"]
